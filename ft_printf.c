@@ -3,49 +3,33 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgaudin <mgaudin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 08:58:30 by mgaudin           #+#    #+#             */
-/*   Updated: 2024/10/23 11:22:47 by mgaudin          ###   ########.fr       */
+/*   Updated: 2024/10/24 19:32:46 by mgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void	ft_handle_format(const char *format, va_list args)
+static void	ft_handle_format(const char *format, va_list args, int *len)
 {
 	if (*format == 'c')
-	{
-		ft_putchar_fd(va_arg(args, int), 1);
-	}
+		*len += ft_print_c(va_arg(args, int));
 	else if (*format == 's')
-	{
-		ft_putstr(va_arg(args, char *));
-	}
+		*len += ft_print_s(va_arg(args, char *));
 	else if (*format == 'p')
-	{
-		ft_putptr(va_arg(args, void *));
-	}
+		*len += ft_print_p(va_arg(args, unsigned long));
 	else if (*format == 'd' || *format == 'i')
-	{
-		
-	}
+		*len += ft_putnbr(va_arg(args, int));
 	else if (*format == 'u')
-	{
-		// TO DO
-	}
+		*len += ft_print_u(va_arg(args, unsigned long));
 	else if (*format == 'x')
-	{
-		// TO DO
-	}
+		*len += ft_putnbr_hexa(va_arg(args, unsigned long), 'x');
 	else if (*format == 'X')
-	{
-		// TO DO
-	}
+		*len += ft_putnbr_hexa(va_arg(args, unsigned long), 'X');
 	else if (*format == '%')
-	{
-		ft_putchar_fd('%', 1);
-	}
+		ft_putchar('%');
 }
 
 int	ft_printf(const char *format, ...)
@@ -59,24 +43,16 @@ int	ft_printf(const char *format, ...)
     {
         if (*format == '%' && *(format + 1))
         {
-            ft_handle_format(format + 1, args);
+            ft_handle_format(format + 1, args, &printed_len);
 			format++;
         }
         else
         {
-            ft_putchar_fd(*format, 1);
+            ft_putchar(*format);
+			printed_len++;
         }
-		printed_len++;
         format++;
     }
 	va_end(args);
 	return (printed_len);
-}
-
-int main(void)
-{
-	char *str = "test";
-	ft_printf("%p", NULL);
-	ft_printf("%p", str);
-	ft_printf("%p", str + 1);
 }

@@ -1,21 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_print_p.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgaudin <mgaudin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/23 11:13:51 by mgaudin           #+#    #+#             */
-/*   Updated: 2024/10/23 11:21:38 by mgaudin          ###   ########.fr       */
+/*   Created: 2024/10/23 11:19:58 by mgaudin           #+#    #+#             */
+/*   Updated: 2024/10/24 19:35:41 by mgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/libft.h"
+#include "../ft_printf.h"
 
-void	ft_putstr(char *s)
+int	ft_print_p(unsigned long nb)
 {
-	if (!s)
-		write(1, "(null)", 6);
-    else
-	    write(1, s, ft_strlen(s));
+	if (!nb)
+	{
+		write(1, "(nil)", 5);
+		return (5);
+	}
+	else
+		return (ft_putnbr_hexa(nb, 'x'));
 }
