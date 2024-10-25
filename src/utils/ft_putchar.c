@@ -1,24 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_p.c                                       :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: mgaudin <mgaudin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/23 11:19:58 by mgaudin           #+#    #+#             */
-/*   Updated: 2024/10/24 19:35:41 by mgaudin          ###   ########.fr       */
+/*   Created: 2024/10/23 15:51:21 by mgaudin           #+#    #+#             */
+/*   Updated: 2024/10/25 15:09:36 by mgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include "../../include/utils.h"
 
-int	ft_print_p(unsigned long nb)
+int	ft_putchar(char c)
 {
-	if (!nb)
-	{
-		write(1, "(nil)", 5);
-		return (5);
-	}
-	else
-		return (ft_putnbr_hexa(nb, 'x'));
+	write(1, &c, 1);
+	return (1);
 }

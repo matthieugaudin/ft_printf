@@ -1,30 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_s.c                                       :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: mgaudin <mgaudin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/23 11:13:51 by mgaudin           #+#    #+#             */
-/*   Updated: 2024/10/24 19:35:43 by mgaudin          ###   ########.fr       */
+/*   Created: 2024/10/25 15:22:25 by mgaudin           #+#    #+#             */
+/*   Updated: 2024/10/25 17:56:41 by mgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include "../../include/utils.h"
 
-int	ft_print_s(char *s)
+void	ft_putstr(char *s)
 {
-	int	s_len;
-
-	s_len = ft_strlen(s);
 	if (!s)
-	{
-		write(1, "(null)", 6);
-		return (6);
-	}
-    else
-	{
-		write(1, s, s_len);
-		return (s_len);
-	}
+		return ;
+	write(1, s, ft_strlen(s));
 }

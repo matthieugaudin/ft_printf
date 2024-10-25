@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: mgaudin <mgaudin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 08:58:30 by mgaudin           #+#    #+#             */
-/*   Updated: 2024/10/24 19:32:46 by mgaudin          ###   ########.fr       */
+/*   Updated: 2024/10/25 17:58:26 by mgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../include/ft_printf.h"
 
 static void	ft_handle_format(const char *format, va_list args, int *len)
 {
@@ -19,40 +19,40 @@ static void	ft_handle_format(const char *format, va_list args, int *len)
 	else if (*format == 's')
 		*len += ft_print_s(va_arg(args, char *));
 	else if (*format == 'p')
-		*len += ft_print_p(va_arg(args, unsigned long));
+		*len += ft_print_hexa(va_arg(args, unsigned long), 'p');
 	else if (*format == 'd' || *format == 'i')
-		*len += ft_putnbr(va_arg(args, int));
+		*len += ft_print_d_i(va_arg(args, int));
 	else if (*format == 'u')
-		*len += ft_print_u(va_arg(args, unsigned long));
+		*len += ft_print_u(va_arg(args, unsigned int));
 	else if (*format == 'x')
-		*len += ft_putnbr_hexa(va_arg(args, unsigned long), 'x');
+		*len += ft_print_hexa(va_arg(args, unsigned long), 'x');
 	else if (*format == 'X')
-		*len += ft_putnbr_hexa(va_arg(args, unsigned long), 'X');
+		*len += ft_print_hexa(va_arg(args, unsigned long), 'X');
 	else if (*format == '%')
-		ft_putchar('%');
+		*len += ft_print_percent('%');
 }
 
 int	ft_printf(const char *format, ...)
 {
-    int     printed_len;
-    va_list args;
+	int		printed_len;
+	va_list	args;
 
-    va_start(args, format);
+	va_start(args, format);
 	printed_len = 0;
-    while (*format)
-    {
-        if (*format == '%' && *(format + 1))
-        {
-            ft_handle_format(format + 1, args, &printed_len);
+	while (*format)
+	{
+		if (*format == '%' && *(format + 1))
+		{
+			ft_handle_format(format + 1, args, &printed_len);
 			format++;
-        }
-        else
-        {
-            ft_putchar(*format);
+		}
+		else
+		{
+			ft_putchar(*format);
 			printed_len++;
-        }
-        format++;
-    }
+		}
+		format++;
+	}
 	va_end(args);
 	return (printed_len);
 }

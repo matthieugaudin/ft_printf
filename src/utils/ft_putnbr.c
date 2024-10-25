@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: mgaudin <mgaudin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 16:33:54 by mgaudin           #+#    #+#             */
-/*   Updated: 2024/10/24 19:56:01 by mgaudin          ###   ########.fr       */
+/*   Updated: 2024/10/25 18:00:33 by mgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include "../../include/utils.h"
 
 int	ft_putnbr(int nb)
 {
@@ -20,7 +20,7 @@ int	ft_putnbr(int nb)
 	if (nb == -2147483648)
 	{
 		write(1, "-2147483648", 11);
-		return (11);	
+		return (11);
 	}
 	else if (nb < 0)
 	{
@@ -31,17 +31,11 @@ int	ft_putnbr(int nb)
 	else if (nb <= 9 && nb >= 0)
 	{
 		len += ft_putchar(nb + '0');
-		return (1);
 	}
-		
 	else if (nb >= 10)
 	{
 		len += ft_putnbr(nb / 10);
 		len += ft_putnbr(nb % 10);
 	}
-}
-
-int main(void)
-{
-	printf("%d", ft_putnbr(1234));
+	return (len);
 }

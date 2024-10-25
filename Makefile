@@ -1,14 +1,16 @@
 NAME = libftprintf.a
 
-LIBFT = libft.a
-
-LIBFTDIR = ./libft
-
 CC = cc
 
 FLAGS = -Wall -Wextra -Werror
 
-SRC = src/ft_printf.c 
+SRC = src/formats/ft_print_c.c src/formats/ft_print_d_i.c \
+	src/formats/ft_print_hexa.c src/formats/ft_print_percent.c \
+	src/formats/ft_print_u.c src/formats/ft_print_s.c \
+	src/utils/ft_putnbr.c src/utils/ft_put_hexa.c \
+	src/utils/ft_putstr.c src/utils/ft_rev_str.c \
+	src/utils/ft_strlcpy.c src/utils/ft_strlen.c \
+	src/ft_printf.c src/utils/ft_putchar.c
 
 OBJ = $(SRC:.c=.o)
 
@@ -17,14 +19,11 @@ all: $(NAME)
 %.o: %.c
 	$(CC) $(FLAGS) -o $@ -c $^
 
-$(NAME): $(LIBFT) $(OBJ)
-	ar rcs $(NAME) $(LIBFT) $(OBJ)
-
-$(LIBFT):
-	$(MAKE) -C $(LIBFTDIR)
+$(NAME): $(OBJ)
+	ar rcs $(NAME) $(OBJ)
 
 clean:
-	rm -f $(OBJ) $(BONUS_OBJ)
+	rm -f $(OBJ)
 
 fclean: clean
 	rm -f $(NAME)

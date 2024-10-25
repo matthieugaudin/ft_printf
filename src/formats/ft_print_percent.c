@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_print_percent.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: mgaudin <mgaudin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/23 15:51:21 by mgaudin           #+#    #+#             */
-/*   Updated: 2024/10/24 19:48:10 by mgaudin          ###   ########.fr       */
+/*   Created: 2024/10/25 15:09:02 by mgaudin           #+#    #+#             */
+/*   Updated: 2024/10/25 17:32:03 by mgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include "../../include/ft_printf.h"
 
-int	ft_putchar(char c)
+int	ft_print_percent(char c)
 {
-	write(1, &c, 1);
+	ft_putchar(c);
 	return (1);
 }

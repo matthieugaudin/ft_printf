@@ -1,19 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_c.c                                       :+:      :+:    :+:   */
+/*   ft_rev_str.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: mgaudin <mgaudin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/23 16:28:10 by mgaudin           #+#    #+#             */
-/*   Updated: 2024/10/24 19:35:36 by mgaudin          ###   ########.fr       */
+/*   Created: 2024/10/25 16:30:11 by mgaudin           #+#    #+#             */
+/*   Updated: 2024/10/25 17:56:46 by mgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include "../../include/utils.h"
 
-int	ft_print_c(int c)
+char	*ft_rev_str(char *str, int start)
 {
-	write(1, &c, 1);
-	return (1);
+	int		j;
+	char	tmp;
+
+	j = ft_strlen(str) - 1;
+	while (start < j)
+	{
+		tmp = str[start];
+		str[start] = str[j];
+		str[j] = tmp;
+		start++;
+		j--;
+	}
+	return (str);
 }
