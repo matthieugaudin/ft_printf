@@ -6,7 +6,7 @@
 /*   By: mgaudin <mgaudin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 08:58:30 by mgaudin           #+#    #+#             */
-/*   Updated: 2024/10/25 17:58:26 by mgaudin          ###   ########.fr       */
+/*   Updated: 2024/10/27 17:53:07 by mgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,15 @@ static void	ft_handle_format(const char *format, va_list args, int *len)
 	else if (*format == 's')
 		*len += ft_print_s(va_arg(args, char *));
 	else if (*format == 'p')
-		*len += ft_print_hexa(va_arg(args, unsigned long), 'p');
+		*len += ft_print_p(va_arg(args, void *));
 	else if (*format == 'd' || *format == 'i')
 		*len += ft_print_d_i(va_arg(args, int));
 	else if (*format == 'u')
 		*len += ft_print_u(va_arg(args, unsigned int));
 	else if (*format == 'x')
-		*len += ft_print_hexa(va_arg(args, unsigned long), 'x');
+		*len += ft_print_x(va_arg(args, unsigned int), 'x');
 	else if (*format == 'X')
-		*len += ft_print_hexa(va_arg(args, unsigned long), 'X');
+		*len += ft_print_x(va_arg(args, unsigned int), 'X');
 	else if (*format == '%')
 		*len += ft_print_percent('%');
 }

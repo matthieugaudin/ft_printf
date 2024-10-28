@@ -1,27 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_s.c                                       :+:      :+:    :+:   */
+/*   ft_put_x.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgaudin <mgaudin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/23 11:13:51 by mgaudin           #+#    #+#             */
-/*   Updated: 2024/10/27 15:49:34 by mgaudin          ###   ########.fr       */
+/*   Created: 2024/10/25 15:52:30 by mgaudin           #+#    #+#             */
+/*   Updated: 2024/10/27 17:58:03 by mgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/ft_printf.h"
+#include "../../include/utils.h"
 
-int	ft_print_s(char *s)
+char	*ft_put_x(unsigned int nb, char *format)
 {
-	if (!s)
+	char			*hexa;
+	size_t			i;
+
+	hexa = (char *)malloc(sizeof(char) * 19);
+	if (!hexa)
 	{
-		ft_putstr("(null)");
-		return (6);
+		return (NULL);
 	}
 	else
 	{
-		ft_putstr(s);
-		return (ft_strlen(s));
+		i = 0;
+		while (nb)
+		{
+			hexa[i++] = format[nb % 16];
+			nb /= 16;
+		}
+		hexa[i] = 0;
+		ft_putstr(ft_rev_str(hexa, 0));
 	}
+	return (hexa);
 }

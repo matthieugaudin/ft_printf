@@ -1,27 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_s.c                                       :+:      :+:    :+:   */
+/*   ft_print_x.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgaudin <mgaudin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/23 11:13:51 by mgaudin           #+#    #+#             */
-/*   Updated: 2024/10/27 15:49:34 by mgaudin          ###   ########.fr       */
+/*   Created: 2024/10/23 11:19:58 by mgaudin           #+#    #+#             */
+/*   Updated: 2024/10/27 18:42:21 by mgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/ft_printf.h"
 
-int	ft_print_s(char *s)
+int	ft_print_x(unsigned int nb, char c)
 {
-	if (!s)
+	char	*adresse;
+	int		len;
+
+	if (nb == 0)
 	{
-		ft_putstr("(null)");
-		return (6);
+		return (ft_putchar('0'));
 	}
 	else
 	{
-		ft_putstr(s);
-		return (ft_strlen(s));
+		if (c == 'x')
+			adresse = ft_put_x(nb, "0123456789abcdef");
+		else if (c == 'X')
+			adresse = ft_put_x(nb, "0123456789ABCDEF");
+		if (!adresse)
+		{
+			free(adresse);
+			return (0);
+		}
+		len = ft_strlen(adresse);
+		free(adresse);
+		return (len);
 	}
 }
