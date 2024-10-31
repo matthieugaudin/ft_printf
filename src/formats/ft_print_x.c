@@ -6,7 +6,7 @@
 /*   By: mgaudin <mgaudin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 11:19:58 by mgaudin           #+#    #+#             */
-/*   Updated: 2024/10/27 18:42:21 by mgaudin          ###   ########.fr       */
+/*   Updated: 2024/10/31 18:14:05 by mgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,10 @@
 
 int	ft_print_x(unsigned int nb, char c)
 {
-	char	*adresse;
+	char	*adress;
 	int		len;
 
+	adress = NULL;
 	if (nb == 0)
 	{
 		return (ft_putchar('0'));
@@ -24,16 +25,16 @@ int	ft_print_x(unsigned int nb, char c)
 	else
 	{
 		if (c == 'x')
-			adresse = ft_put_x(nb, "0123456789abcdef");
+			adress = ft_put_x(nb, "0123456789abcdef");
 		else if (c == 'X')
-			adresse = ft_put_x(nb, "0123456789ABCDEF");
-		if (!adresse)
+			adress = ft_put_x(nb, "0123456789ABCDEF");
+		if (!adress)
 		{
-			free(adresse);
+			free(adress);
 			return (0);
 		}
-		len = ft_strlen(adresse);
-		free(adresse);
+		len = ft_strlen(adress);
+		free(adress);
 		return (len);
 	}
 }

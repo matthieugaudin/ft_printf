@@ -6,7 +6,7 @@
 /*   By: mgaudin <mgaudin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 15:08:55 by mgaudin           #+#    #+#             */
-/*   Updated: 2024/10/25 17:31:39 by mgaudin          ###   ########.fr       */
+/*   Updated: 2024/10/31 18:15:15 by mgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,8 @@
 
 int	ft_print_d_i(int nb)
 {
-	return (ft_putnbr(nb));
+	int	n;
+
+	n = ft_putnbr(nb);
+	return (n);
 }

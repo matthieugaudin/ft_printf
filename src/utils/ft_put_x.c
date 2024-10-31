@@ -6,7 +6,7 @@
 /*   By: mgaudin <mgaudin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 15:52:30 by mgaudin           #+#    #+#             */
-/*   Updated: 2024/10/27 17:58:03 by mgaudin          ###   ########.fr       */
+/*   Updated: 2024/10/31 18:24:35 by mgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,10 @@
 char	*ft_put_x(unsigned int nb, char *format)
 {
 	char			*hexa;
+	char			*res;
 	size_t			i;
 
+	res = NULL;
 	hexa = (char *)malloc(sizeof(char) * 19);
 	if (!hexa)
 	{
@@ -31,7 +33,8 @@ char	*ft_put_x(unsigned int nb, char *format)
 			nb /= 16;
 		}
 		hexa[i] = 0;
-		ft_putstr(ft_rev_str(hexa, 0));
+		res = ft_rev_str(hexa, 0);
+		ft_putstr(res);
 	}
-	return (hexa);
+	return (res);
 }

@@ -6,7 +6,7 @@
 /*   By: mgaudin <mgaudin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 17:30:09 by mgaudin           #+#    #+#             */
-/*   Updated: 2024/10/27 18:43:09 by mgaudin          ###   ########.fr       */
+/*   Updated: 2024/10/31 18:27:52 by mgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include <stdlib.h>
 
 int		ft_putchar(char c);
-char	*ft_put_hexa(unsigned int nb, char *format, int is_p);
 int		ft_putnbr(int nb);
 size_t	ft_strlen(const char *s);
 void	ft_putstr(char *s);
