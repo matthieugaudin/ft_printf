@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgaudin <mgaudin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 08:58:30 by mgaudin           #+#    #+#             */
-/*   Updated: 2024/10/27 17:53:07 by mgaudin          ###   ########.fr       */
+/*   Updated: 2024/11/05 18:28:54 by mgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ int	ft_printf(const char *format, ...)
 	int		printed_len;
 	va_list	args;
 
+	if (format == NULL)
+		return (-1);
 	va_start(args, format);
 	printed_len = 0;
 	while (*format)
